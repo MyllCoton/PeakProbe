@@ -5,27 +5,38 @@ Tool for identifying/classifying solvent molecules in macromolecular x-ray cryst
 
 Authors: 
 -------
--- Paul Smith, PhD. Assistant Prof. of Chemistry, FordhamUniversity (psmith66@fordham.edu) 
--- Laurel Jones, PhD Candidate,Northwestern University 
--- Michael Tynes, Data Sciences GraduateProgram, Fordham University
+
+- Paul Smith, PhD. Assistant Prof. of Chemistry, FordhamUniversity (psmith66@fordham.edu) 
+- Laurel Jones, PhD Candidate,Northwestern University 
+- Michael Tynes, Data Sciences GraduateProgram, Fordham University
 
 Software Prerequisites: 
 ----
--- Current PHENIX installation (https://www.phenix-online.org/)
+
+- Current PHENIX installation (https://www.phenix-online.org/)
 
 Requirements: 
 -----
--- A correctly formatted PDB (with or without existing solvent) for a given x-ray structure -- Structure factor data that can be read by PHENIX (cif/mtz/scalepack/etc.) -- All python modules included within this repository (20 in total) -- The PHENIX interface master python file (pprobe\_vXXX.py) 
+
+- A correctly formatted PDB (with or without existing solvent) for a given x-ray structure
+- Structure factor data that can be read by PHENIX (cif/mtz/scalepack/etc.)
+- All python modules included within this repository (20 in total)
+- The PHENIX interface master python file (pprobe\_vXXX.py) 
 
 Usage:
 ----
--- PeakProbe must be run under the "phenix.python" environment or be made aware of the locations of all necessary CCTBX imports -- A PDB file and structure factor data are required and can be specified in any order or suitable format as per PHENIX norms -- The program has several modes of operation and many configurable parameters, but the essentials are covered below.
+
+- PeakProbe must be run under the "phenix.python" environment or be made aware of the locations of all necessary CCTBX imports
+- A PDB file and structure factor data are required and can be specified in any order or suitable format as per PHENIX norms
+- The program has several modes of operation and many configurable parameters, but the essentials are covered below.
 
 _____Basic/Typical usage of PeakProbe:_____
 
 Within a directory containing a clone of this repository, run:
 
-*****phenix.python pprobe_v0.1.py XXXX_input.pdb XXXX_input.mtz > YYYY.log*****
+```
+phenix.python pprobe_v0.1.py XXXX_input.pdb XXXX_input.mtz > YYYY.log
+```
 
 XXXX_input.pdb is a well-formatted PDB file containing a macromolecular structure (with or without solvent)
 
@@ -41,7 +52,8 @@ Output:
 ----
 
 PeakProbe typically outputs the following files:
-NB: PREFIX will be determined from the PDB filename or can be set at run-time with "output_file_name_prefix=PREFIX"as a command line argument.
+
+NB: PREFIX will be determined from the PDB filename or can be set at run-time with `output_file_name_prefix=PREFIX` as a command line argument.
 
 >        PREFIX_report.log           --> Description of each peak
 >        PREFIX_refined_coords.pdb   --> Debugging only
@@ -73,7 +85,10 @@ Options:
 
 ___Example:___
 >    --To run PeakProbe on an existing structure to validate its current solvent model, use the following:
->        **phenix.python pprobe_v0.1.py XXXX_input.pdb XXXX_input.mtz omit_mode=valsol > YYYY.log**
+
+```
+phenix.python pprobe_v0.1.py XXXX_input.pdb XXXX_input.mtz omit_mode=valsol > YYYY.log
+```
 
 Detailed Output Descriptions:
 -----
@@ -111,7 +126,9 @@ PREFIX_peakdb.pkl:
 >               proceed directly to analysis, this file can be input at the command line using the following syntax:
 >
 
-___phenix.python pprobe_v0.1.py extract=False data_pkl.peak_dict=PREFIX_peakdb.pkl___
+```
+phenix.python pprobe_v0.1.py extract=False data_pkl.peak_dict=PREFIX_peakdb.pkl
+```
 
 >
 >        --     no other PDB or structure factor data are needed and PeakProbe moves directly to analysis
